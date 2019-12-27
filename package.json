@@ -8,8 +8,9 @@
     "lint": "tslint -p .",
     "build": "tsc",
     "test": "jest",
+    "docs": "typedoc",
     "clean": "rm -rf build",
-    "cleanall": "npm run clean && rm -rf node_modules *.log *.tgz",
+    "cleanall": "npm run clean && rm -rf node_modules docs *.log *.tgz",
     "prepare": "npm run clean && npm run lint && npm run build",
     "prepublishOnly": "npm run test"
   },
@@ -45,6 +46,8 @@
     "ts-jest": "^24.2.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.15.6",
+    "typedoc-plugin-markdown": "^2.2.14",
     "typescript": "^3.7.4"
   },
   "dependencies": {

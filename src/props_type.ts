@@ -10,9 +10,8 @@ import { Optional } from 'utility-types';
 /**
  * Test if types X and Y are identical.
  *
- * See:
- * https://github.com/piotrwitek/utility-types/blob/master/src/mapped-types.ts#L153-L157
- * https://stackoverflow.com/questions/52443276/how-to-exclude-getter-only-properties-from-type-in-typescript
+ * @see https://github.com/piotrwitek/utility-types/blob/master/src/mapped-types.ts#L153-L157
+ * @see https://stackoverflow.com/questions/52443276/how-to-exclude-getter-only-properties-from-type-in-typescript
  */
 export type TypeEqual<X, Y, A = true, B = false> = (<T>() => T extends X ? 1 : 2) extends <
   T
