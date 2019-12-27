@@ -5,12 +5,13 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "build": "tsc",
     "lint": "tslint -p .",
+    "build": "tsc",
+    "test": "jest",
     "clean": "rm -rf build",
-    "cleanall": "rm -rf build node_modules *.log *.tgz",
-    "prepare": "echo 'prepare'"
+    "cleanall": "npm run clean && rm -rf node_modules *.log *.tgz",
+    "prepare": "npm run clean && npm run lint && npm run build",
+    "prepublishOnly": "npm run test"
   },
   "author": "Zhao DAI",
   "license": "MIT",
@@ -25,8 +26,12 @@
   },
   "jest": {
     "clearMocks": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ],
     "transform": {
-      "^.+\\.(t|j)sx?$": "ts-jest"
+      "^.+\\.tsx?$": "ts-jest"
     }
   },
   "devDependencies": {
