@@ -4,15 +4,12 @@
   "description": "Useful functionalities.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "files": [
-    "build/**/*"
-  ],
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "lint": "tslint -p .",
     "clean": "rm -rf build",
-    "cleanall": "rm -rf build node_modules *.log",
+    "cleanall": "rm -rf build node_modules *.log *.tgz",
     "prepare": "echo 'prepare'"
   },
   "author": "Zhao DAI",
@@ -20,15 +17,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/daidodo/pylon.git"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.25",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
-    "tslint": "^5.20.1",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.4"
   },
   "prettier": {
     "singleQuote": true,
@@ -40,5 +28,23 @@
     "transform": {
       "^.+\\.(t|j)sx?$": "ts-jest"
     }
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.17",
+    "react": "^16.12.0",
+    "utility-types": "^3.10.0"
   }
 }

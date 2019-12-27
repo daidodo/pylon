@@ -1,4 +1,7 @@
 {
   "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/__test__/*"]
+  },
   "rules": {}
 }
