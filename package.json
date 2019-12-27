@@ -1,0 +1,44 @@
+{
+  "name": "pylon",
+  "version": "1.0.0",
+  "description": "Useful functionalities.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build/**/*"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "lint": "tslint -p .",
+    "clean": "rm -rf build",
+    "cleanall": "rm -rf build node_modules *.log",
+    "prepare": "echo 'prepare'"
+  },
+  "author": "Zhao DAI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daidodo/pylon.git"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100
+  },
+  "jest": {
+    "clearMocks": true,
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    }
+  }
+}
