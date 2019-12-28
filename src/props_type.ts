@@ -20,9 +20,9 @@ export type TypeEqual<X, Y, A = true, B = false> = (<T>() => T extends X ? 1 : 2
   : B;
 
 /**
- * Returns keys of a type (same as keyword keyof), or the union of keys of a union type.
+ * Returns keys of a type (same as keyword `keyof`), or the union of keys of a union type.
  *
- * This is to complement keyword keyof returning only intersection
+ * This is to complement keyword `keyof` returning only intersection
  * of keys for a union type.
  * ```ts
  *    type T = { a: string; b: number } | { b: boolean; c: number };
