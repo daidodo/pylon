@@ -10,8 +10,8 @@ import { Optional } from 'utility-types';
 /**
  * Test if types X and Y are identical.
  *
- * @see https://github.com/piotrwitek/utility-types/blob/master/src/mapped-types.ts#L153-L157
- * @see https://stackoverflow.com/questions/52443276/how-to-exclude-getter-only-properties-from-type-in-typescript
+ * {@link https://github.com/piotrwitek/utility-types/blob/master/src/mapped-types.ts#L153-L157}
+ * {@link https://stackoverflow.com/questions/52443276/how-to-exclude-getter-only-properties-from-type-in-typescript}
  */
 export type TypeEqual<X, Y, A = true, B = false> = (<T>() => T extends X ? 1 : 2) extends <
   T
@@ -24,32 +24,35 @@ export type TypeEqual<X, Y, A = true, B = false> = (<T>() => T extends X ? 1 : 2
  *
  * This is to complement keyword keyof returning only intersection
  * of keys for a union type.
- * @example
+ * ```ts
  *    type T = { a: string; b: number } | { b: boolean; c: number };
  *    type X = keyof T;       // X = 'b'
  *    type Y = UnionKeyOf<T>; // Y = 'a' | 'b' | 'c'
+ * ```
  */
 export type UnionKeyOf<T> = T extends any ? keyof T : never;
 
 /**
  * Remove keys in K from type T. Works with union types as well.
  *
- * The default {@code Omit} has an odd behavior for the follow code:
- * @example
+ * The default `Omit` has an odd behavior for the follow code, while `UnionOmit` fixes it:
+ * ```ts
  *    type T = { a: string; b: number } | { b: boolean; c: number };
  *    type X = Omit<T, 'b'>;      // X = {}
  *    type Y = UnionOmit<T, 'b'>; // Y = { a: string } | { c: number }
+ * ```
  */
 export type UnionOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
 
 /**
  * Make keys from K optional in T. Works with union types as well.
- * @example
+ * ```ts
  *    type T = { a: string; b: number }
  *    type X = UnionOptional<T, 'a'>; // X = { a?: string; b: number}
  *
  *    type T = { a: string; b: number } | { b: boolean; c: number };
  *    type X = UnionOptional<T, 'a'>; // X = { a?: string; b: number} | { b: boolean; c: number }
+ * ```
  */
 export type UnionOptional<T extends object, K extends UnionKeyOf<T> = UnionKeyOf<T>> = T extends any
   ? Optional<T, K>
@@ -57,16 +60,17 @@ export type UnionOptional<T extends object, K extends UnionKeyOf<T> = UnionKeyOf
 
 /**
  * Add, remove or replace properties of an object.
- * @example
+ * ```ts
  *    type T = { a: string; b: number };
  *    type X1 = ModifyProps<T, 'a'>;                // X1 = { b: number }
  *    type X2 = ModifyProps<T, { c: string }>;      // X2 = { a: string; b: number; c: string }
  *    type X3 = ModifyProps<T, { a: boolean }>;     // X3 = { a: boolean; b: number; }
  *    type X4 = ModifyProps<T, 'a', { c: string }>; // X4 = { b: number; c: string }
+ * ```
  *
- * @template T Target object
- * @template KA Keys taken out from T, or properties added or updated to T
- * @template A Properties added or updated to T when KA is type of keys.
+ * @typeparam T - Target object
+ * @typeparam KA - Keys taken out from T, or properties added or updated to T
+ * @typeparam A - Properties added or updated to T when KA is type of keys.
  */
 export type ModifyProps<
   T extends object,
@@ -78,7 +82,7 @@ export type ModifyProps<
  * Infer props type for React component X, i.e. functions, React.FC,
  * React.PureComponent and React.Component, with or without defaultProps.
  *
- * @example
+ * ```ts
  *     const Comp = (props: { a: string }) => <div />;
  *     type Props = PropsType<typeof Comp>; // expect { a: string }
  *
@@ -88,6 +92,7 @@ export type ModifyProps<
  *       }
  *     }
  *     type Props = PropsType<typeof Comp>; // expect { a: string, children?: ReactNode }
+ * ```
  */
 export type PropsType<X extends ComponentType<any>, D = _DefaultProps<X>> = _OptionalChildren<
   UnionOmit<_AllProps<X>, keyof D> & Partial<D>
