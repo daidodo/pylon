@@ -14,11 +14,17 @@
     "prepare": "npm run clean && npm run lint && npm run build",
     "prepublishOnly": "npm run test"
   },
+  "keywords": [
+    "react",
+    "props",
+    "type",
+    "utility"
+  ],
   "author": "Zhao DAI",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/daidodo/pylon.git"
+    "url": "git+https://github.com/daidodo/pylon.git"
   },
   "prettier": {
     "singleQuote": true,
